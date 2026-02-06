@@ -18,9 +18,27 @@ const handleResolvedPromise = (promise) => {
   });
 };
 
-const handleResolvedOrRejectedPromise = (promise) => {};
+const handleResolvedOrRejectedPromise = (promise) => {
+  return promise
+    .then((message) => {
+      console.log(message);
+      return message.toUpperCase();
+    })
+    .catch((error) => {
+      console.error(`Your error message was: ${error.message}`);
+      return null;
+    });
+};
 
-const pauseForMs = (ms) => {};
+const pauseForMs = (ms) => {
+  console.log("Starting...");
+
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, ms);
+  });
+};
 
 module.exports = {
   resolvedWrapper,
